@@ -1,38 +1,7 @@
 import { useCustomers } from "./hooks/useCustomers";
 import { EmptyState, ErrorState, LoadingState } from "../../shared/components/states";
-import { DataTable, ColumnDef } from "../../shared/components/DataTable";
-import { CustomerResponse } from "./customer.types";
-
-const customerColumns: ColumnDef<CustomerResponse>[] = [
-    {
-      key: "name",
-      header: "Name",
-      render: (c: CustomerResponse) => (
-        <span className="font-medium text-slate-800">
-          {c.firstName} {c.lastName}
-        </span>
-      ),
-    },
-    {
-      key: "dateOfBirth",
-      header: "Date of Birth",
-      className: "text-slate-500",
-      render: (c: CustomerResponse) => formatDate(c.dateOfBirth),
-    },
-    {
-      key: "id",
-      header: "ID",
-      className: "hidden sm:table-cell font-mono text-xs text-slate-400",
-      headerClassName: "hidden sm:table-cell",
-      render: (c: CustomerResponse) => c.id,
-    },
-  ];
-
-function formatDate(iso: string): string {
-  if (!iso) return "—";
-  const [y, m, d] = iso.split("T")[0].split("-");
-  return `${d}/${m}/${y}`;
-}
+import { DataTable } from "../../shared/components/DataTable";
+import { CustomerColumns } from "./utils/columns";
 
 export function CustomerList() {
   const { data: customers, isLoading, isError } = useCustomers();
@@ -50,7 +19,7 @@ export function CustomerList() {
         ) : !Array.isArray(customers) || !customers.length ? (
           <EmptyState />
         ) : (
-          <DataTable data={customers} columns={customerColumns} rowKey={(row) => row.id.toString()} />
+          <DataTable data={customers} columns={CustomerColumns} rowKey={(row) => row.id.toString()} />
         )}
       </div>
     </section>

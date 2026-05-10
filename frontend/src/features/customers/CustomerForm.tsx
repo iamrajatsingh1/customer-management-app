@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import { useCreateCustomer } from "./hooks/useCreateCustomer";
-import type { ApiErrorResponse, CreateCustomerInput, CustomerResponse } from "./customer.types";
+import type { ApiErrorResponse, CreateCustomerInput, CustomerResponse } from "./types";
 
 const inputClassName =
   "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200";

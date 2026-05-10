@@ -1,5 +1,5 @@
-import { apiClient } from "../../lib/axios";
-import type { CreateCustomerInput, CustomerResponse, CustomersListResponse } from "./customer.types";
+import { apiClient } from "../../../lib/axios";
+import type { CreateCustomerInput, CustomerResponse, CustomersListResponse } from "../types";
 
 export const createCustomer = async (
   payload: CreateCustomerInput,

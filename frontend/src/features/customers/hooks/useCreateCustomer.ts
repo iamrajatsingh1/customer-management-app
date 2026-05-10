@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCustomer } from "../customer.api";
-import { CUSTOMERS_QUERY_KEY } from "../constants";
-import type { CreateCustomerInput, CustomerResponse } from "../customer.types";
+import { createCustomer } from "../api";
+import { CUSTOMERS_QUERY_KEY } from "../utils/constants";
+import type { CreateCustomerInput, CustomerResponse } from "../types";
 
 export function useCreateCustomer(onSuccess?: (customer: CustomerResponse) => void) {
   const queryClient = useQueryClient();

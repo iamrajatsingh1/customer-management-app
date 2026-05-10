@@ -1,17 +1,12 @@
-import { CustomerForm } from "./features/customers/CustomerForm";
-import { CustomerList } from "./features/customers/CustomerList";
+import { CustomersModule } from "./features/customers";
 
 function App() {
   return (
     <main className="mx-auto min-h-screen w-full max-w-3xl px-4 py-10">
       <header className="mb-8">
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900">Customer Management</h1>
-        <p className="mt-2 text-sm text-slate-600">
-          Create customers using React Hook Form with Axios and React Query mutation flow.
-        </p>
       </header>
-      <CustomerForm />
-      <CustomerList />
+      <CustomersModule />
     </main>
   );
 }

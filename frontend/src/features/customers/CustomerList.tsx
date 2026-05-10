@@ -1,10 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { getCustomers } from "./customer.api";
-import { EmptyState, ErrorState, LoadingState } from "../../sharedComponents/states";
-import { DataTable, ColumnDef } from "../../sharedComponents/DataTable";
+import { useCustomers } from "./hooks/useCustomers";
+import { EmptyState, ErrorState, LoadingState } from "../../shared/components/states";
+import { DataTable, ColumnDef } from "../../shared/components/DataTable";
 import { CustomerResponse } from "./customer.types";
-
-const CUSTOMERS_QUERY_KEY = ["customers"] as const;
 
 const customerColumns: ColumnDef<CustomerResponse>[] = [
     {
@@ -38,10 +35,7 @@ function formatDate(iso: string): string {
 }
 
 export function CustomerList() {
-  const { data: customers, isLoading, isError } = useQuery({
-    queryKey: CUSTOMERS_QUERY_KEY,
-    queryFn: getCustomers,
-  });
+  const { data: customers, isLoading, isError } = useCustomers();
 
   return (
     <section className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-200">

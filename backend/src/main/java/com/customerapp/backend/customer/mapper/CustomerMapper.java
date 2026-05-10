@@ -1,6 +1,7 @@
 package com.customerapp.backend.customer.mapper;
 
 import com.customerapp.backend.customer.Customer;
+import com.customerapp.backend.customer.dto.CreateCustomerRequest;
 import com.customerapp.backend.customer.dto.CustomerResponse;
 import java.util.List;
 
@@ -23,5 +24,13 @@ public final class CustomerMapper {
         return customers.stream()
                 .map(CustomerMapper::toResponse)
                 .toList();
+    }
+
+    public static Customer toEntity(CreateCustomerRequest request) {
+        return Customer.builder()
+                .firstName(request.firstName())
+                .lastName(request.lastName())
+                .dateOfBirth(request.dateOfBirth())
+                .build();
     }
 }

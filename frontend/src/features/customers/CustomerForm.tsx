@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import { createCustomer } from "./customer.api";
@@ -11,6 +11,8 @@ const inputClassName =
 const errorClassName = "mt-1 text-xs text-red-600";
 
 export function CustomerForm() {
+const queryClient = useQueryClient();
+
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const {
@@ -31,6 +33,7 @@ export function CustomerForm() {
     onSuccess: (created: CustomerResponse) => {
       reset();
       setSuccessMessage(`Customer created successfully (ID: ${created.id})`);
+      queryClient.invalidateQueries({ queryKey: ["customers"] });
     },
   });
 

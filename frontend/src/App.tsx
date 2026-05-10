@@ -1,4 +1,5 @@
 import { CustomerForm } from "./features/customers/CustomerForm";
+import { CustomerList } from "./features/customers/CustomerList";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         </p>
       </header>
       <CustomerForm />
+      <CustomerList />
     </main>
   );
 }

@@ -12,6 +12,10 @@ export type CustomerResponse = {
   createdAt: string;
 };
 
+export type CustomersListResponse = {
+  data: CustomerResponse[];
+}
+
 export type ApiErrorResponse = {
   timestamp: string;
   status: number;

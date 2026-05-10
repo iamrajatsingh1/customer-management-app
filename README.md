@@ -227,6 +227,67 @@ See `AI_USAGE.md` for detailed breakdown.
 
 ---
 
+# Deployment Strategy
+
+The application was designed to support straightforward containerized and cloud-based deployment workflows.
+
+## Frontend Deployment
+
+The React frontend can be deployed as a static application using platforms such as:
+
+* AWS Amplify
+* Vercel
+* Netlify
+
+Suggested production flow:
+
+```bash id="jlwm7d"
+npm run build
+```
+
+The generated production assets can then be hosted via CDN-backed static hosting for low-latency delivery.
+
+## Backend Deployment
+
+The Spring Boot backend can be packaged as an executable JAR and deployed using Docker containers.
+
+Example packaging step:
+
+```bash id="jlwm9d"
+./mvnw clean package
+```
+
+Suggested deployment options:
+
+* Docker container on EC2/ECS
+* Kubernetes-based deployment
+* Traditional VM deployment
+
+## Containerization Approach
+
+Suggested production setup:
+
+```text id="jlwm4d"
+Frontend (AWS Amplify / CDN)
+        ↓
+Reverse Proxy / Load Balancer
+        ↓
+Backend (Spring Boot Docker Container)
+        ↓
+Database
+```
+
+## Future Production Considerations
+
+* Replace H2 with PostgreSQL or MySQL
+* Externalize configuration using environment variables
+* Add CI/CD pipeline for automated deployments
+* Add health checks and monitoring
+* Use multi-stage Docker builds for optimized image sizes
+* Add HTTPS termination and secure headers
+
+---
+
 # Future Improvements
 
 * Docker support
